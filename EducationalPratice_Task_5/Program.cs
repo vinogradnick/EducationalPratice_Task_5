@@ -19,7 +19,10 @@ namespace EducationalPratice_Task_5
         static Random random = new Random();
         static void Main(string[] args)
         {
-            Console.WriteLine("Получить целочисленную квадратную матрицу того же порядка, в которой элемент равен еденице,\n если соответствующий ему элемент исходной матрицы больше элемента, расположенного в его строке на главной диагонали,\n и равен нулю в противном случае.");
+            Console.WriteLine(
+                "Получить целочисленную квадратную матрицу того же порядка, в которой элемент равен еденице," +
+                "\nесли соответствующий ему элемент исходной матрицы больше элемента, расположенного в его строке на главной диагонали," +
+                "\nи равен нулю в противном случае.\n");
             double[,] matrix = new double[9, 9];
             double diag = 0;//Элемент исходной матрицы по диагонали
 
@@ -29,12 +32,7 @@ namespace EducationalPratice_Task_5
                 for (int j = 0; j < matrix.GetLength(1); j++)
                     matrix[i, j] = Math.Round(random.NextDouble(), 3);
             //Печать матрицы
-            for (int i = 0; i < matrix.GetLength(0); i++)
-            {
-                for (int j = 0; j < matrix.GetLength(1); j++)
-                    Console.Write($" {matrix[i, j],5} ");
-                Console.WriteLine();
-            }
+            Print(matrix);
             //Выполнение действия над матрицей
             for (int i = 0; i < matrix.GetLength(0); i++)
             {
@@ -46,14 +44,19 @@ namespace EducationalPratice_Task_5
                         matrix[i, j] = 0;
             }
             Console.WriteLine("Итоговая матрица:");
+            Print(matrix);
+            Console.WriteLine("Для выхода введите любую клавишу");
+            Console.Read();
+        }
+
+        private static void Print(double[,] matrix)
+        {
             for (int i = 0; i < matrix.GetLength(0); i++)
             {
                 for (int j = 0; j < matrix.GetLength(1); j++)
                     Console.Write($" {matrix[i, j],5} ");
                 Console.WriteLine();
             }
-
-            Console.Read();
         }
     }
 }
